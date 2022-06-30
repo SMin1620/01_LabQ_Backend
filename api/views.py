@@ -8,11 +8,23 @@ from .rainfall_pipe import *
 # Create your views here.
 class Test(View):
     def get(self, request, gubn):
-        drain_pipe_data = DrainPipeMonitoringAPI.getJsonData(gubn)
+        drain_pipe_data = DrainPipeMonitoringAPI.get_drainpipe_data(gubn)
         GU_NAME = drain_pipe_data[0]['GUBN_NAM'] + '구'
         rainfall_data = ListRainfallServiceAPI.get_rainfall_data(GU_NAME)
 
-        if rainfall_data:
-            return JsonResponse({"하수구" : drain_pipe_data, "강우량":rainfall_data})
-        else:
-            return JsonResponse({"하수구": drain_pipe_data})
+        latest_drain_pipe_data = []
+        for row_num in range(len(drain_pipe_data)-1):
+            if latest_drain_pipe_data:
+                if latest_drain_pipe_data[0]['MEA_YMD'] < drain_pipe_data[row_num]['MEA_YMD']:
+                    latest_drain_pipe_data = [drain_pipe_data[row_num]]
+                elif latest_drain_pipe_data[0]['MEA_YMD'] == drain_pipe_data[row_num]['MEA_YMD']:
+                    latest_drain_pipe_data.append(drain_pipe_data[row_num])
+            else:
+                latest_drain_pipe_data.append(drain_pipe_data[row_num])
+                
+        latest_rainfall_data = []
+        for data in rainfall_data:
+            if rainfall_data[0]['RECEIVE_TIME'] == data['RECEIVE_TIME']:
+                latest_rainfall_data.append(data)
+    
+        return JsonResponse({"drain_info": latest_drain_pipe_data, "rainfall_info" : latest_rainfall_data})
