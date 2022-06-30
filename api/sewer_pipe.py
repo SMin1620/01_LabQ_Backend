@@ -13,9 +13,9 @@ class  DrainPipeMonitoringAPI:
     START_INDEX = DrainPipeMonitoringAPISetting.START_INDEX
     END_INDEX = DrainPipeMonitoringAPISetting.END_INDEX
 
-    def getJsonData(GUBN=None):
+    def get_drainpipe_data(GUBN=None):
         now_datetime = datetime.datetime.now()
-        before_datetime = (now_datetime - datetime.timedelta(minutes=20)).strftime('%Y%m%d%H')
+        before_datetime = (now_datetime - datetime.timedelta(minutes=10)).strftime('%Y%m%d%H')
         now_datetime = now_datetime.strftime('%Y%m%d%H')
         
         url = DrainPipeMonitoringAPI.URL.format(
