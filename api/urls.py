@@ -4,6 +4,6 @@ from .views import RainfallDrainAPI
 app_name = 'api'
 
 urlpatterns = [
-    path('rainfall-drain/', RainfallDrainAPI.as_view(), name='rainfall-dran'),
+    path('rainfall-drain/', RainfallDrainAPI.as_view(), name='rainfall-drain'),
     
 ]
