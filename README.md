@@ -20,8 +20,8 @@
 - [Test cases code](#테스트-케이스)  
 - [기술 스택](#사용된-기술-스택)  
 
+<div align="left">  
 
-<div align="center">  
 
 ## 👨‍👨‍👦‍👦 Team "F" member  
 
@@ -102,7 +102,7 @@
 
 
     - 구분 코드(GUBN)에 맞는 서울시 하수관로 수위 현황 및 강우량 정보를 결합하여 client에게 필터링한 데이터를 JSON 형식으로 반환한다.
-
+    
     - ```text
         #request URI : /api/rainfall-drain/?gubn=1
         #response 
@@ -135,7 +135,8 @@
         }
         ```
 
-        
+
+​        
 
 - 클라이언트
 
@@ -146,55 +147,51 @@
     - Query String(key = value)
         - gubn=int : 조회할 구의 구분 코드를 입력한다. 입력 값은 정수로 유효 값은 1부터 25이다.
 
-    
+
+​    
+
+## 실행 방법
+
+```
+📌 Dependency
+
+# 로컬에서 바로 서버 구동
+pip install -r requirements.txt
+python manage.py runserver
+
+# 도커 실행
+pip install docker
+pip install docker-compose
+docker-compose up -d
+```
 
 
-- 
-    ## 실행 방법
 
-    ```
-    📌 Dependency
-    
-    # 로컬에서 바로 서버 구동
-    pip install -r requirements.txt
-    python manage.py runserver
-    
-    # 도커 실행
-    pip install docker
-    pip install docker-compose
-    docker-compose up -d
-    ```
+## 🔥 배포
 
-    
+docker를 이용해 프로젝트 api를 컨테이너화 하여 GCP에 배포했습니다  
 
-    ## 🔥 배포
+[API Link](http://34.64.83.224:8000/api/rainfall-drop/?gubn=1)
 
-    docker를 이용해 프로젝트 api를 컨테이너화 하여 GCP에 배포했습니다  
 
-    [API Link](http://34.64.83.224:8000/api/rainfall-drop/?gubn=1)
 
-    
+## API 명세서  
 
-    ## API 명세서  
+[API 명세서 (Swagger)](http://34.64.83.224:8000/swagger/)
 
-    [API 명세서 (Swagger)](http://34.64.83.224:8000/swagger/)
 
-    
 
-    ## 테스트 케이스
+## 테스트 케이스
 
-    Pytest-Django로 구현 된 28개의 테스트 구현
+Pytest-Django로 구현 된 28개의 테스트 구현
 
-    - 성공 케이스: 25개 (통과)
-    - 실패 케이스: 3개 (통과)
+- 성공 케이스: 25개 (통과)
+- 실패 케이스: 3개 (통과)
 
-    
 
-    ## 사용된 기술 스택
+
+## 사용된 기술 스택
 
 > - Back-End :  <img src="https://img.shields.io/badge/Python 3.10-3776AB?style=flat&logo=Python&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Django 4.0.4-092E20?style=flat&logo=Django&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Django-DRF 3.13.1-009287?style=flat&logo=Django&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Docker 20.10.14-2496ED?style=flat&logo=docker&logoColor=white"/>
-> 
+>
 > - ETC　　　:  <img src="https://img.shields.io/badge/Git-F05032?style=flat-badge&logo=Git&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Github-181717?style=flat-badge&logo=Github&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Swagger-FF6C37?style=flat-badge&logo=Swagger&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white"/>
-
-
-
