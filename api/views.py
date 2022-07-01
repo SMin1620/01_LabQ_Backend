@@ -26,8 +26,8 @@ class RainfallDrainAPI(View):
                     'ROW': latest_rainfall_data
                 },
                 'DRAINPIPE_DATA': {
-                    'DATA_NUM': len(latest_drain_pipe_data),
-                    'ROW': latest_drain_pipe_data
+                'DATA_NUM': len(latest_drain_pipe_data),
+                'ROW': latest_drain_pipe_data
                 }
             }
             return JsonResponse(res)
@@ -38,3 +38,4 @@ class RainfallDrainAPI(View):
             return JsonResponse({'status_code' : 500, 'detail' : '서버에 에러 발생'}, status=500)
         except Exception:
             return JsonResponse({'status_code' : 404, 'detail' : '잘못된 요청입니다,'}, status=404)
+
