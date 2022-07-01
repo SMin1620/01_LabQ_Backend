@@ -8,14 +8,13 @@ from .rainfall_pipe import *
 # Create your views here.
 class RainfallDrainAPI(View):
     def get(self, request):
-        GUBN = request.GET['gubn']
-
-        if 0 < int(GUBN) < 26:
-            drain_pipe_data = DrainPipeMonitoringAPI.getJsonData(GUBN)
+        try:
+            GUBN = request.GET['gubn']
+            drain_pipe_data = DrainPipeMonitoringAPI.get_drain_pipe_data(GUBN)
             GU_NAME = drain_pipe_data[0]['GUBN_NAM'] + '구'
             rainfall_data = ListRainfallServiceAPI.get_rainfall_data(GU_NAME)
 
-            latest_drain_pipie_data = list(filter(lambda x: x['MEA_YMD'] == drain_pipe_data[0]['MEA_YMD'], drain_pipe_data))
+            latest_drain_pipe_data = list(filter(lambda x: x['MEA_YMD'] == drain_pipe_data[0]['MEA_YMD'], drain_pipe_data))
             latest_rainfall_data = list(filter(lambda x: x['RECEIVE_TIME'] == rainfall_data[0]['RECEIVE_TIME'], rainfall_data))
 
             res = {
@@ -27,10 +26,16 @@ class RainfallDrainAPI(View):
                     'ROW': latest_rainfall_data
                 },
                 'DRAINPIPE_DATA': {
-                    'DATA_NUM': len(latest_drain_pipie_data),
-                    'ROW': latest_drain_pipie_data
+                'DATA_NUM': len(latest_drain_pipe_data),
+                'ROW': latest_drain_pipe_data
                 }
             }
             return JsonResponse(res)
-        else:
+        
+        except KeyError:
             return JsonResponse({'status_code' : 404, 'detail' : '잘못된 요청입니다,'}, status=404)
+        except IndexError:
+            return JsonResponse({'status_code' : 500, 'detail' : '서버에 에러 발생'}, status=500)
+        except Exception:
+            return JsonResponse({'status_code' : 404, 'detail' : '잘못된 요청입니다,'}, status=404)
+
