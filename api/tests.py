@@ -1,48 +1,63 @@
 from rest_framework.test import APIClient, APITestCase
-from django.test import TestCase, Client
-import json
-
-"""
-테스트 케이스 명세서
-
-1. 케이스 설정 방법
-    1) success test case
-        - 성공 응답 코드 
-    2) error test case 
-        - 에러 응답 코드
-
-2. 케이스 종류
-    1) 필수 요소 1개 (구분 코드 GUBN)
-        - 구분 코드(GUBN) 
-        - Success Test Case 25개
-        - Error Test Case 3개 
-
-3. Parameter
-    - IDN : String
-    - GUBN : Int
-    - GUBN_NAM : String
-    - MEA_YMD : YYYYMMDDHH24
-    - MEA_WAL : Float
-    - SIG_STA : String
-"""
 
 
 # Create your tests here.
-
-
 class SewerLineTest(APITestCase):
+
+    """
+    author : 이승민
+    co_author : 임혁
+    param :
+        - IDN : String
+        - GUBN : Int
+        - GUBN_NAM : String
+        - MEA_YMD : YYYYMMDDHH24
+        - MEA_WAL : Float
+        - SIG_STA : String
+
+    return :
+        - GUBN
+        - status_code(200 or 400)
+
+    explanation :
+        테스트 케이스 명세서
+
+        1. 케이스 설정 방법
+            1) success test case
+                - 성공 응답 코드
+            2) error test case
+                - 에러 응답 코드
+
+        2. 케이스 종류
+            1) 필수 요소 1개 (구분 코드 GUBN)
+                - 구분 코드(GUBN)
+                - Success Test Case 25개
+                - Error Test Case 3개
+
+        3. 테스트 케이스
+            - 성공 테스트 케이스
+                필수 요소 : GUBN
+                Success Test Case : 25개
+                method : GET
+                param : gubn
+
+            - 실패 테스트 케이스
+                필수 요소 : GUBN
+                Fail Test Case : 3개
+                method : GET
+                param : gubn
+                content : (1) gubn이 포함되어 있지 않은 경우. (/api/rainfall-drain/)
+                          (2) gubn 범위를 벗어난 경우 (gubn == 0)
+                          (2) gubn 범위가 벗어난 경우 (gubn == 26 ~ )
+    """
+
     client = APIClient
     headers = {}
 
     def setUp(self):
         sewer1 = {
-            # 'id': 1,
-            # 'idn': '01-0004',
             'gubn': 1,
             'gubn_nam': '종로구',
-            # 'mea_ymd': '2022-06-28T00:00:58Z',
-            # 'mea_wal': '0.12',
-            # 'sig_sta': '통신양호'
         }
         self.sewer1 = sewer1
 

@@ -1,3 +1,6 @@
+# author : 이승민
+# explanation : 도커 컴포즈 파일입니다.
+
 version: '3'
 
 services:
