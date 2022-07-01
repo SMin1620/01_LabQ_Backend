@@ -6,7 +6,7 @@ from .rainfall_pipe import *
 
 
 # Create your views here.
-class Test(View):
+class RainfallDrainAPI(View):
     def get(self, request):
         GUBN = request.GET['gubn']
         if GUBN:
