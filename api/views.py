@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.views.generic import View
+from rest_framework.views import APIView
 from .sewer_pipe import *
 from .rainfall_pipe import *
 
 
 # Create your views here.
-class RainfallDrainAPI(View):
+class RainfallDrainAPI(APIView):
     def get(self, request):
         try:
             GUBN = request.GET['gubn']
