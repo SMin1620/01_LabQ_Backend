@@ -10,7 +10,7 @@ class RainfallDrainAPI(View):
     def get(self, request):
         try:
             GUBN = request.GET['gubn']
-            drain_pipe_data = DrainPipeMonitoringAPI.getJsonData(GUBN)
+            drain_pipe_data = DrainPipeMonitoringAPI.get_drain_pipe_data(GUBN)
             GU_NAME = drain_pipe_data[0]['GUBN_NAM'] + '구'
             rainfall_data = ListRainfallServiceAPI.get_rainfall_data(GU_NAME)
 
