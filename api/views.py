@@ -3,10 +3,11 @@ from django.http import JsonResponse
 from django.views.generic import View
 from .sewer_pipe import *
 from .rainfall_pipe import *
+from rest_framework.views import APIView
 
 
 # Create your views here.
-class Test(View):
+class Test(APIView):
     def get(self, request, gubn):
         drain_pipe_data = DrainPipeMonitoringAPI.get_drainpipe_data(gubn)
         GU_NAME = drain_pipe_data[0]['GUBN_NAM'] + '구'
