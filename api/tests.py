@@ -17,12 +17,6 @@ import json
         - Success Test Case 25개
         - Error Test Case 3개 
 
-    2) 필수 요소 1개 + 옵션 요소 2 ~ 3개 (ex. MEA_YMD, MEA_YMD2)
-        - 필수 요소 (GUBN)을 default 케이스로 둔다.
-        - start_index & end_index
-        - Success Test Case 25개 : index 범위를 정상적으로 설정.
-        - Error Test Case 50개 : (1) start_index > end_index , (2) MEA_YMD or MEA_YMD2 is None
-
 3. Parameter
     - IDN : String
     - GUBN : Int
