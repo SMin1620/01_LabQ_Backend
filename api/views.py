@@ -8,11 +8,19 @@ from .rainfall_pipe import *
 # Create your views here.
 class RainfallDrainAPI(APIView):
     def get(self, request):
+        '''
+        author: 전재완
+        co-author: 정용수
+        param: String
+        return: JSON
+        설명: 구분코드를 입력받아 서울시 공공데이터 api를 이용해 하수도관 수위 현황 및 강우량 데이터를 결합하여 전송
+        '''
         try:
             GUBN = request.GET['gubn']
+            print(GUBN)
             drain_pipe_data = DrainPipeMonitoringAPI.get_drain_pipe_data(GUBN)
             GU_NAME = drain_pipe_data[0]['GUBN_NAM'] + '구'
-            rainfall_data = ListRainfallServiceAPI.get_rainfall_data(GU_NAME)
+            rainfall_data = RainfallMonitoringAPI.get_rainfall_data(GU_NAME)
 
             latest_drain_pipe_data = list(filter(lambda x: x['MEA_YMD'] == drain_pipe_data[0]['MEA_YMD'], drain_pipe_data))
             latest_rainfall_data = list(filter(lambda x: x['RECEIVE_TIME'] == rainfall_data[0]['RECEIVE_TIME'], rainfall_data))
@@ -30,7 +38,6 @@ class RainfallDrainAPI(APIView):
                     'ROW': latest_drain_pipe_data
                     }
                 }
-            
             return JsonResponse(res)
         
         except KeyError:
