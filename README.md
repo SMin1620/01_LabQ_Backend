@@ -169,7 +169,7 @@ docker-compose up -d
 
 docker를 이용해 프로젝트 api를 컨테이너화 하여 GCP에 배포했습니다  
 
-[API Link](http://34.64.83.224:8000/api/rainfall-drop/?gubn=1)
+[API Link](http://34.64.83.224:8000/api/rainfall-drain/?gubn=1)
 
 
 
