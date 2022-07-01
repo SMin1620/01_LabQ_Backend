@@ -1,27 +1,23 @@
-from .api_settings import DrainPipeMonitoringAPISetting
-
+from . import api_settings
 import requests, json
 import datetime
 
 
 
 class  DrainPipeMonitoringAPI:
-    KEY = DrainPipeMonitoringAPISetting.KEY
-    SERVICE = DrainPipeMonitoringAPISetting.SERVICE
-    TYPE = DrainPipeMonitoringAPISetting.TYPE
-    URL = DrainPipeMonitoringAPISetting.URL
-    START_INDEX = DrainPipeMonitoringAPISetting.START_INDEX
-    END_INDEX = DrainPipeMonitoringAPISetting.END_INDEX
-
+    SERVICE = 'DrainpipeMonitoringInfo'
+    START_INDEX = 1
+    END_INDEX = 1000
+    
     def get_drain_pipe_data(GUBN=None):
         try:
             now_datetime = datetime.datetime.now()
             before_datetime = (now_datetime - datetime.timedelta(minutes=20)).strftime('%Y%m%d%H')
             now_datetime = now_datetime.strftime('%Y%m%d%H')
 
-            url = DrainPipeMonitoringAPI.URL.format(
-                DrainPipeMonitoringAPI.KEY,
-                DrainPipeMonitoringAPI.TYPE,
+            url = URL + '/{}/{}/{}/{}/{}/{}/{}/{}'.format(
+                KEY,
+                TYPE,
                 DrainPipeMonitoringAPI.SERVICE,
                 DrainPipeMonitoringAPI.START_INDEX,
                 DrainPipeMonitoringAPI.END_INDEX,
