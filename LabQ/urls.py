@@ -23,7 +23,7 @@ from drf_yasg import openapi
 # swagger
 schema_view = get_schema_view(
     openapi.Info(
-        title='Swagger Wanted Pre OnBoarding',
+        title='Swagger LabQ',
         default_version='api',
         description='LabQ API',
         terms_of_service="https://www.google.com/policies/terms/",
