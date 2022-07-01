@@ -1,9 +1,9 @@
 from django.urls import path
-from . import views
+from .views import RainfallDrainAPI
 
 app_name = 'api'
 
 urlpatterns = [
-    path('test/<int:gubn>', views.Test.as_view(), name='test'),
+    path('rainfall-drain/', RainfallDrainAPI.as_view(), name='rainfall-dran'),
     
 ]
