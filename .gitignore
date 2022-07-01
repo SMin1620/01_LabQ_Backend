@@ -170,3 +170,4 @@ cython_debug/
 
 #django secret key
 LabQ/my_settings.py
+api/api_settings.py
