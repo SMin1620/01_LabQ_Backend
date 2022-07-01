@@ -4,7 +4,7 @@
 
   # 과제 01 - LabQ
 
-
+</div>
 
 
 ## 목차
@@ -20,7 +20,7 @@
 - [Test cases code](#테스트-케이스)  
 - [기술 스택](#사용된-기술-스택)  
 
-<div align="left">  
+<div align="center">  
 
 
 ## 👨‍👨‍👦‍👦 Team "F" member  
@@ -53,8 +53,6 @@
 <details>
   <summary>어떤 정보를 조회 할 수 있는가?</summary>
 <div markdown="1">
-
-
 - 서울시 하수관로 수위 현황
   
   - 요청 인자
@@ -147,8 +145,8 @@
     - Query String(key = value)
         - gubn=int : 조회할 구의 구분 코드를 입력한다. 입력 값은 정수로 유효 값은 1부터 25이다.
 
-
-​    
+</div>
+</details>
 
 ## 실행 방법
 
