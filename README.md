@@ -171,11 +171,14 @@ docker를 이용해 프로젝트 api를 컨테이너화 하여 GCP에 배포했�
 
 [API Link](http://34.64.83.224:8000/api/rainfall-drain/?gubn=1)
 
+GCP 배포, 테스트 및 동작을 확인하였으며, 비용 등의 이유로 현재는 접속불가할 수 있습니다.
 
 
 ## API 명세서  
 
 [API 명세서 (Swagger)](http://34.64.83.224:8000/swagger/)
+![image](https://user-images.githubusercontent.com/81574795/177253389-98ab4ea3-95da-4f2d-96a2-aeca0954102f.png)
+
 
 
 
