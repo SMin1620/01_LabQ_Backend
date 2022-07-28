@@ -1,0 +1,15 @@
+# author : 이승민
+# explanation : 도커 컴포즈 파일입니다.
+
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/app/server/labq
+    ports:
+      - 8000:8000
+    env_file:
+      - ./LabQ/my_settings.py
